@@ -1,38 +1,51 @@
 package models
 
-import "time"
+import (
+	"net/url"
+	"time"
+)
 
-type Access struct {
-	AccessID     string    `json:"access_id"`
-	SessionID    string    `json:"session_id"`
-	UserName     string    `json:"user_name"`
-	Organization string    `json:"organization"`
-	SAMLHash     string    `json:"saml_hash"`
-	Status       string    `jspn:"status"`
-	AuthorizedAt time.Time `json:"authorized_at"`
-	CreatedAt    time.Time `json:"created_at"`
+type AccessCorrespondence struct {
+	AccessID                 int       `json:"access_id"`
+	SessionID                string    `json:"session_id"`
+	Mail                     string    `json:"mail"`
+	OrganizationName         string    `json:"organization_name"`
+	JaOrganizationName       string    `json:"ja_organization_name"`
+	OrganizationalUnitName   string    `json:"organizational_unit_name"`
+	JaOrganizationalUnitName string    `json:"ja_organizational_unit_name"`
+	SamlHash                 string    `json:"saml_hash"`
+	Status                   string    `jspn:"status"`
+	AuthorizedAt             time.Time `json:"authorized_at"`
+	CreatedAt                time.Time `json:"created_at"`
 }
 
-type IdP struct {
-	ID        string    `json:"idp_id"`
-	Name      string    `json:"idp_name"`
-	Url       string    `json:"url"`
-	ExpireAt  time.Time `json:"expire_at"`
-	CreatedAt time.Time `json:"created_at"`
+type IdentityProvider struct {
+	ID                 int       `json:"id"`
+	OrganizationName   string    `json:"organization_name"`
+	JaOrganizationName string    `json:"ja_organization_name"`
+	MetadataURL        url.URL   `json:"metadata_url"`
+	SSOURL             url.URL   `json:"sso_url"`
+	LogoutURL          url.URL   `json:"logout_url"`
+	ExpireAt           time.Time `json:"expire_at"`
+	CreatedAt          time.Time `json:"created_at"`
 }
 
-type PIdP struct {
-	ID        string    `json:"idp_id"`
-	Name      string    `json:"idp_name"`
-	Url       string    `json:"url"`
-	ExpireAt  time.Time `json:"expire_at"`
-	CreatedAt time.Time `json:"created_at"`
+type PatientBaseDataProvider struct {
+	ID                 int       `json:"id"`
+	OrganizationName   string    `json:"organization_name"`
+	JaOrganizationName string    `json:"ja_organization_name"`
+	QueryURL           url.URL   `json:"query_url"`
+	MetadataURL        url.URL   `json:"metadata_url"`
+	ExpireAt           time.Time `json:"expire_at"`
+	CreatedAt          time.Time `json:"created_at"`
 }
 
-type PDP struct {
-	ID        string    `json:"idp_id"`
-	Name      string    `json:"idp_name"`
-	Url       string    `json:"url"`
-	ExpireAt  time.Time `json:"expire_at"`
-	CreatedAt time.Time `json:"created_at"`
+type PatientDataProvider struct {
+	ID                 int       `json:"id"`
+	OrganizationName   string    `json:"organization_name"`
+	JaOrganizationName string    `json:"ja_organization_name"`
+	QueryURL           url.URL   `json:"query_url"`
+	MetadataURL        url.URL   `json:"metadata_url"`
+	ExpireAt           time.Time `json:"expire_at"`
+	CreatedAt          time.Time `json:"created_at"`
 }

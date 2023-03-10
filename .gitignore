@@ -15,3 +15,9 @@
 # vendor/
 
 .DS_Store
+
+
+# Keys
+*.pem
+*.crt
+*.key

@@ -36,7 +36,7 @@ func (c *PatientBaseDataProviderController) GetPBDPListHandler(w http.ResponseWr
 		page, err = strconv.Atoi(p[0])
 		if err != nil {
 			err = apperrors.BadParam.Wrap(err, "query param must be number")
-			http.Error(w, "Invalid query parameter", http.StatusBadRequest)
+			apperrors.ErrorHandler(w, req, err)
 			return
 		}
 	} else {
@@ -45,7 +45,7 @@ func (c *PatientBaseDataProviderController) GetPBDPListHandler(w http.ResponseWr
 
 	pbdpList, err := c.service.GetPBDPListService(page)
 	if err != nil {
-		http.Error(w, "fail internal exec\n", http.StatusInternalServerError)
+		apperrors.ErrorHandler(w, req, err)
 		return
 	}
 

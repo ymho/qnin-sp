@@ -9,6 +9,8 @@ import (
 	"github.com/ymho/qnin-sp/controllers/services"
 )
 
+// TODO: エラーハンドラの呼び出しによりエラー処理
+
 type IdentityProviderController struct {
 	service services.IdentityProviderServicer
 }

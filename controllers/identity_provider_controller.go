@@ -19,13 +19,13 @@ func NewIdentityProviderController(s services.IdentityProviderServicer) *Identit
 	return &IdentityProviderController{service: s}
 }
 
-// /idpのハンドラ
+// PostIdPHandler /idpのハンドラ
 func (c *IdentityProviderController) PostIdPHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
 	io.WriteString(w, "Hello, world!\n")
 }
 
-// /idp/listのハンドラ
+// GetIdPListHandler /idp/listのハンドラ
 func (c *IdentityProviderController) GetIdPListHandler(w http.ResponseWriter, req *http.Request) {
 
 	queryMap := req.URL.Query()

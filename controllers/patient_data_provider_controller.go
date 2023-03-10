@@ -19,13 +19,13 @@ func NewPatientDataProviderController(s services.PatientDataProviderServicer) *P
 	return &PatientDataProviderController{service: s}
 }
 
-// /pdpのハンドラ
+// PostPDPHandler /pdpのハンドラ
 func (c *PatientDataProviderController) PostPDPHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
 	io.WriteString(w, "Hello, world!\n")
 }
 
-// /pdp/listのハンドラ
+// GetPDPListHandler /pdp/listのハンドラ
 func (c *PatientDataProviderController) GetPDPListHandler(w http.ResponseWriter, req *http.Request) {
 
 	queryMap := req.URL.Query()

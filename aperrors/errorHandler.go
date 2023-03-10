@@ -2,6 +2,7 @@ package aperrors
 
 import (
 	"encoding/json"
+	"errors"
 	"net/http"
 )
 
@@ -9,7 +10,7 @@ import (
 // TODO: コントローラ層での実装
 func ErrorHandler(w http.ResponseWriter, req *http.Request, err error) {
 	var appErr *MyAppError
-	if !error.As(err, &appErr) {
+	if !errors.As(err, &appErr) {
 		appErr = &MyAppError{
 			ErrCode: Unknown,
 			Message: "internal process failed",

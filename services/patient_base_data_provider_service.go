@@ -9,12 +9,12 @@ import (
 func (s *MyAppService) GetPBDPListService(page int) ([]models.PatientBaseDataProvider, error) {
 	pbdpList, err := repositories.SelectPBDPList(s.db, page)
 	if err != nil {
-		err = apperrors.GetDataFailed.Wrap(err, "fail to get data")
+		err = aperrors.GetDataFailed.Wrap(err, "fail to get data")
 		return nil, err
 	}
 
 	if len(pbdpList) == 0 {
-		err := apperrors.NAData.Wrap(ErrNoData, "no data")
+		err := aperrors.NAData.Wrap(ErrNoData, "no data")
 		return nil, err
 	}
 

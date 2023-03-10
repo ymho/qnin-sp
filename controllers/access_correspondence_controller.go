@@ -19,26 +19,26 @@ func NewAccessCorrespondenceController(s services.AccessCorrespondenceServicer) 
 	return &AccessCorrespondenceController{service: s}
 }
 
-// /のハンドラ
+// DefaultHandler /のハンドラ
 func (c *AccessCorrespondenceController) DefaultHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
 	io.WriteString(w, "Hello, world!\n")
 }
 
-// /helloのハンドラ
+// HelloHandler /helloのハンドラ
 func (c *AccessCorrespondenceController) HelloHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
 	io.WriteString(w, "Hello, world!\n")
 }
 
-// /saml/のハンドラ
+// SAMLHandler /saml/のハンドラ
 func (c *AccessCorrespondenceController) SAMLHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
 	io.WriteString(w, "Hello, world!\n")
 	// fmt.Fprintf(w, "Hello, %s, %s!", samlsp.AttributeFromContext(r.Context(), "urn:oid:0.9.2342.19200300.100.1.1"), samlsp.SessionFromContext(r.Context()))
 }
 
-// /listのハンドラ
+// GetACListHandler /listのハンドラ
 func (c *AccessCorrespondenceController) GetACListHandler(w http.ResponseWriter, req *http.Request) {
 	queryMap := req.URL.Query()
 	var page int

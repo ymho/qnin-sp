@@ -9,11 +9,11 @@ import (
 func (s *MyAppService) GetIdPListService(page int) ([]models.IdentityProvider, error) {
 	idpList, err := repositories.SelectIdPList(s.db, page)
 	if err != nil {
-		err = apperrors.GetDataFailed.Wrap(err, "fail to get data")
+		err = aperrors.GetDataFailed.Wrap(err, "fail to get data")
 		return nil, err
 	}
 	if len(idpList) == 0 {
-		err := apperrors.NAData.Wrap(ErrNoData, "no data")
+		err := aperrors.NAData.Wrap(ErrNoData, "no data")
 		return nil, err
 	}
 

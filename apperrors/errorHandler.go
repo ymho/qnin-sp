@@ -1,12 +1,14 @@
-package aperrors
+package apperrors
 
 import (
 	"encoding/json"
 	"errors"
+	"github.com/ymho/qnin-sp/api/middlewares"
+	"log"
 	"net/http"
 )
 
-// コントローラ層から呼び出されるエラーハンドラ
+// ErrorHandler コントローラ層から呼び出されるエラーハンドラ
 // TODO: コントローラ層での実装
 func ErrorHandler(w http.ResponseWriter, req *http.Request, err error) {
 	var appErr *MyAppError
@@ -17,6 +19,9 @@ func ErrorHandler(w http.ResponseWriter, req *http.Request, err error) {
 			Err:     err,
 		}
 	}
+
+	traceID := middlewares.GetTraceID(req.Context())
+	log.Printf("[%d]error: %s\n", traceID, appErr)
 
 	var statusCode int
 

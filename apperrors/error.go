@@ -1,4 +1,4 @@
-package aperrors
+package apperrors
 
 type MyAppError struct {
 	ErrCode

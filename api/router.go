@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"github.com/ymho/qnin-sp/api/middlewares"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -33,6 +34,8 @@ func NewRouter(db *sql.DB) *mux.Router {
 
 	r.HandleFunc("/pbdp", pbdpCon.PostPBDPHandler).Methods(http.MethodPost)
 	r.HandleFunc("/pbdp/list", pbdpCon.GetPBDPListHandler).Methods(http.MethodGet)
+
+	r.Use(middlewares.LoggingMiddleware)
 
 	return r
 }

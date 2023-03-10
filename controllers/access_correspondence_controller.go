@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"github.com/ymho/qnin-sp/apperrors"
 	"io"
 	"net/http"
 	"strconv"
@@ -46,6 +47,7 @@ func (c *AccessCorrespondenceController) GetACListHandler(w http.ResponseWriter,
 		var err error
 		page, err = strconv.Atoi(p[0])
 		if err != nil {
+			err = apperrors.BadParam.Wrap(err, "query param must be number")
 			http.Error(w, "Invalid query parameter", http.StatusBadRequest)
 			return
 		}

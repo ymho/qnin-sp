@@ -1,7 +1,7 @@
 package services
 
 import (
-	"github.com/ymho/qnin-sp/aperrors"
+	"github.com/ymho/qnin-sp/apperrors"
 	"github.com/ymho/qnin-sp/models"
 	"github.com/ymho/qnin-sp/repositories"
 )
@@ -9,12 +9,12 @@ import (
 func (s *MyAppService) GetPBDPListService(page int) ([]models.PatientBaseDataProvider, error) {
 	pbdpList, err := repositories.SelectPBDPList(s.db, page)
 	if err != nil {
-		err = aperrors.GetDataFailed.Wrap(err, "fail to get data")
+		err = apperrors.GetDataFailed.Wrap(err, "fail to get data")
 		return nil, err
 	}
 
 	if len(pbdpList) == 0 {
-		err := aperrors.NAData.Wrap(ErrNoData, "no data")
+		err := apperrors.NAData.Wrap(ErrNoData, "no data")
 		return nil, err
 	}
 
@@ -26,7 +26,7 @@ func (s *MyAppService) PostPBDPService(pbdp models.PatientBaseDataProvider) (mod
 
 	newPBDP, err := repositories.InsertPBDP(s.db, pbdp)
 	if err != nil {
-		err = aperrors.InsertDataFailed.Wrap(err, "fail to record data")
+		err = apperrors.InsertDataFailed.Wrap(err, "fail to record data")
 		return models.PatientBaseDataProvider{}, err
 	}
 	return newPBDP, nil

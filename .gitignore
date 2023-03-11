@@ -20,4 +20,5 @@
 # Keys
 *.pem
 *.crt
+*.cert
 *.key

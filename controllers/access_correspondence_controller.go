@@ -2,6 +2,8 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
+	"github.com/crewjam/saml/samlsp"
 	"github.com/ymho/qnin-sp/apperrors"
 	"io"
 	"net/http"
@@ -29,7 +31,8 @@ func (c *AccessCorrespondenceController) DefaultHandler(w http.ResponseWriter, r
 // HelloHandler /helloのハンドラ
 func (c *AccessCorrespondenceController) HelloHandler(w http.ResponseWriter, req *http.Request) {
 	// TODO: 実装
-	io.WriteString(w, "Hello, world!\n")
+	fmt.Fprintf(w, "Hello, %s, %s!", samlsp.AttributeFromContext(req.Context(), "urn:oid:0.9.2342.19200300.100.1.1"), samlsp.SessionFromContext(req.Context()))
+	//io.WriteString(w, "Hello, world!\n")
 }
 
 // SAMLHandler /saml/のハンドラ

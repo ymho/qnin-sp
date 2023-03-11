@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  qnin-sp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: qnin-sp
+    container_name: qnin-sp
+    expose:
+      - "80"
+    networks:
+      fed-common:
+    restart: "always"
+
+networks:
+  fed-common:
+    external: true
